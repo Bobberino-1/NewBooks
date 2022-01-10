@@ -1,0 +1,146 @@
+Add, delete, list books, list book
+
+"authors": {
+    "authors": [
+}
+Test Books and Authors
+
+Then add Link - and Test
+
+Can add Author on its own
+If you add a book, it must have an author, the author must exist, and then create a link.
+    Name of book and author are required.  Author must exist or else there will be an error.
+If you displsy a book, it displays the author as well
+if you delete a book, it deletes the link to the author
+if you display an author, it displays all the books linked to it.
+
+Then Publisher and Link
+
+The Database is SQLAlchemy and SQLite3
+
+Flask, GraphQL, Ariadne
+
+Add a books and authors tables, 1 author to many books.
+Keep the relationship in a third table.
+AuthorId and Author FirstName and Last Name
+BookId, BookName
+Author-Books
+ID
+AuthorID
+BookID
+
+Need add/Delete Author and Book  -  Changes???
+MAke a book related to an author and remove.
+Add a book gie it an author..
+
+Then, add Publishers Table - To make this like Product
+categories (even though it isn't really realistic), there
+will be one to many realtionships between publishers
+and authors and one to many between authors and books.
+
+# Add an Author, add a Book to an Author
+# List authors, list an author by id.
+# List books, list a book by id
+# List an author and all its books.
+# List an author and one book
+# List a book with author
+
+https://vincenttechblog.com/building-web-api-with-python-flask-graphql-sqlalchemy-and-postgresql/
+
+
+
+query fetchAllBooks {
+  books {
+    success
+    errors
+    books {
+      name
+      id
+      author {
+        first_name
+        last_name
+      }
+    }
+  }
+}
+
+
+query fetchAllAuthors {
+  authors {
+    success
+    errors
+    authors {
+      first_name
+      last_name
+      id
+    }
+  }
+}
+
+query fetchBook {
+  book(bookId: "2") {
+    success
+    errors
+    book {
+      id
+      name
+      author {
+        first_name
+        last_name
+      }
+    }
+  }
+}
+
+
+query fetchAuthor {
+  author(authorId: "1") {
+    success
+    errors
+    author {id first_name last_name}
+  }
+}
+
+
+mutation newBook {
+  createBook(name:"Book 1", authorId: 1) {
+    success
+    errors
+    book {
+      id
+      name
+      author{id}
+    }
+  }
+}
+
+
+mutation newAuthor {
+  createAuthor(first_name:"J.D." last_name:"Salinger") {
+    success
+    errors
+    author {
+      id
+      first_name
+      last_name
+    }
+  }
+}
+
+
+mutation {
+  deleteBook(bookId: "1") {
+    success
+    errors
+  }
+}
+
+
+mutation {
+  deleteAuthor(authorId: "1") {
+    success
+    errors
+  }
+}
+
+
