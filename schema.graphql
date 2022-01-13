@@ -29,8 +29,9 @@ type DeleteBookResult {
 
 type Author {
     id: ID!
-    first_name: String!
-    last_name: String!
+    first_name: String
+    last_name: String
+    books: [Book]
 }
 
 type AuthorResult {
@@ -51,6 +52,7 @@ type DeleteAuthorResult {
 }
 
 type Query {
+    author_with_id(author_id: ID!): Author
     books: BooksResult!
     book(bookId: ID!): BookResult!
     authors: AuthorsResult!
