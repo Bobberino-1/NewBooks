@@ -14,7 +14,6 @@ class Book(db.Model):
     #     }
 
     def to_dict(self):
-        print("in models.Book.to_dict")
         return {
             "id": self.id,
             "name": self.name,

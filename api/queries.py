@@ -12,7 +12,6 @@ def author_with_id(_, info, author_id):
 # type defined in the schema, we need to implement a resolver
 # for that field as well.
 def resolve_books_for_author(author, info):
-    print(author)
     books = db.session.query(Book.id, Book.name).join(Author, Book.author_id == Author.id).all()
     return books
 
