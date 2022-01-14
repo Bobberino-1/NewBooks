@@ -1,5 +1,5 @@
-from datetime import datetime
 from ariadne import convert_kwargs_to_snake_case
+
 from api import db
 from api.models import Book, Author
 
@@ -34,10 +34,10 @@ def resolve_delete_book(obj, info, book_id):
         db.session.commit()
         payload = {"success": True}
 
-    except Exception:
+    except Exception as error:
         payload = {
             "success": False,
-            "errors": [f"Todo matching id {book_id} not found"]
+            "errors": [f"Todo matching id {book_id} not found. {error}"]
         }
 
     return payload
@@ -56,10 +56,10 @@ def resolve_create_author(obj, info, first_name, last_name):
             "success": True,
             "author": author.to_dict()
         }
-    except Exception:
+    except Exception as error:
         payload = {
             "success": False,
-            "errors": [f"There is an error in the input data"]
+            "errors": [f"There is an error in the input data. {error}"]
         }
 
     return payload
@@ -73,10 +73,10 @@ def resolve_delete_author(obj, info, author_id):
         db.session.commit()
         payload = {"success": True}
 
-    except Exception:
+    except Exception as error:
         payload = {
             "success": False,
-            "errors": [f"Todo matching id {author_id} not found"]
+            "errors": [f"Todo matching id {author_id} not found. {error}"]
         }
 
     return payload

@@ -34,6 +34,7 @@ class Author(db.Model):
             "last_name": self.last_name
         }
 
+
 # class LinkBookAuthor(db.Model):
 #    id = db.Column(db.Integer, primary_key=True)
 #    BookId = db.Column(db.Integer)

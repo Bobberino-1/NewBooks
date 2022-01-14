@@ -5,8 +5,9 @@ from api import db
 
 # resolvers
 def author_with_id(_, info, author_id):
-    author=Author.query.get(author_id)
+    author = Author.query.get(author_id)
     return author
+
 
 # Remember that if a resolver returns a value that is of another
 # type defined in the schema, we need to implement a resolver
@@ -31,6 +32,7 @@ def resolve_authors(obj, info):
             "errors": [str(error)]
         }
     return payload
+
 
 @convert_kwargs_to_snake_case
 def resolve_books(obj, info):
@@ -65,6 +67,7 @@ def resolve_book(obj, info, book_id):
 
     return payload
 
+
 @convert_kwargs_to_snake_case
 def resolve_author(obj, info, author_id):
     try:
@@ -78,4 +81,4 @@ def resolve_author(obj, info, author_id):
             "success": False,
             "errors": [f"Author item matching id {author_id} not found"]
         }
-    return payload 
+    return payload

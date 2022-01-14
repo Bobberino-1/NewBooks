@@ -10,7 +10,7 @@ Then add Link - and Test
 Can add Author on its own
 If you add a book, it must have an author, the author must exist, and then create a link.
     Name of book and author are required.  Author must exist or else there will be an error.
-If you displsy a book, it displays the author as well
+If you display a book, it displays the author as well
 if you delete a book, it deletes the link to the author
 if you display an author, it displays all the books linked to it.
 
@@ -35,7 +35,7 @@ Add a book gie it an author..
 
 Then, add Publishers Table - To make this like Product
 categories (even though it isn't really realistic), there
-will be one to many realtionships between publishers
+will be one to many relationships between publishers
 and authors and one to many between authors and books.
 
 # Add an Author, add a Book to an Author
@@ -103,9 +103,8 @@ query fetchAuthorWithBooks {
   }
 }
 
-
 mutation newBook {
-  createBook(name:"Book 1", authorId: 1) {
+  createBook(name:"Book 1", authorId: "1") {
     success
     errors
     book {
@@ -116,9 +115,8 @@ mutation newBook {
   }
 }
 
-
 mutation newAuthor {
-  createAuthor(first_name:"J.D." last_name:"Salinger") {
+  createAuthor(first_name:"Ernest" last_name:"Hemmingway") {
     success
     errors
     author {
