@@ -5,7 +5,7 @@ from flask import request, jsonify
 
 from api import app
 from api.mutations import resolve_create_book, resolve_delete_book, \
-    resolve_create_author, resolve_delete_author
+    resolve_create_author, resolve_delete_author, resolve_author_last_name
 from api.queries import author_with_id, resolve_books_for_author, resolve_authors, \
     resolve_books, resolve_book, resolve_author
 
@@ -27,6 +27,7 @@ mutation.set_field("createBook", resolve_create_book)
 mutation.set_field("deleteBook", resolve_delete_book)
 mutation.set_field("createAuthor", resolve_create_author)
 mutation.set_field("deleteAuthor", resolve_delete_author)
+mutation.set_field("changeAuthorLastName", resolve_author_last_name)
 
 type_defs = load_schema_from_path("schema.graphql")
 

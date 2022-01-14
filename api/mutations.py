@@ -82,30 +82,29 @@ def resolve_delete_author(obj, info, author_id):
     return payload
 
 
-'''
+
 @convert_kwargs_to_snake_case
-def resolve_update_due_date(obj, info, todo_id, new_date):
+def resolve_author_last_name(obj, info, author_id, new_last_name):
     try:
-        todo = Todo.query.get(todo_id)
-        if todo:
-            todo.due_date = datetime.strptime(new_date, '%d-%m-%Y').date()
-        db.session.add(todo)
+        author = Author.query.get(author_id)
+        if author:
+            author.last_name = new_last_name
+        db.session.add(author)
         db.session.commit()
         payload = {
             "success": True,
-            "todo": todo.to_dict()
-        }
-
-    except ValueError:  # date format errors
-        payload = {
-            "success": False,
-            "errors": ["Incorrect date format provided. Date should be in "
-                       "the format dd-mm-yyyy"]
+            "author": author.to_dict()
         }
     except AttributeError:  # todo not found
         payload = {
             "success": False,
-            "errors": [f"Todo matching id {todo_id} not found"]
+            "errors": [f"Todo matching id {author_id} not found"]
         }
+    except Exception as error:  # date format errors
+        payload = {
+            "success": False,
+            "errors": [f"Error changing last name to {new_last_name}."]
+        }
+
     return payload
-'''
+

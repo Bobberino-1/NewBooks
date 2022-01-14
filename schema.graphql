@@ -63,4 +63,5 @@ type Mutation {
     deleteBook(bookId: ID!): DeleteBookResult!
     createAuthor(first_name: String, last_name: String): AuthorResult!
     deleteAuthor(authorId: ID!): DeleteAuthorResult!
+    changeAuthorLastName(authorId: ID!, new_last_name: String): AuthorResult!
 }
