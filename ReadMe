@@ -47,18 +47,7 @@ and authors and one to many between authors and books.
 
 https://vincenttechblog.com/building-web-api-with-python-flask-graphql-sqlalchemy-and-postgresql/
 
-query {
-  author_with_id(author_id: "1") {
-    id
-    first_name
-    last_name
-    books {
-      id
-      name
-    }
-  }
-}
-
+Queries:
 
 query fetchAllBooks {
   books {
@@ -67,14 +56,20 @@ query fetchAllBooks {
     books {
       name
       id
-      author {
-        first_name
-        last_name
-      }
     }
   }
 }
 
+query fetchBook {
+  book(bookId: "2") {
+    success
+    errors
+    book {
+      id
+      name
+    }
+  }
+}
 
 query fetchAllAuthors {
   authors {
@@ -88,27 +83,23 @@ query fetchAllAuthors {
   }
 }
 
-query fetchBook {
-  book(bookId: "2") {
-    success
-    errors
-    book {
-      id
-      name
-      author {
-        first_name
-        last_name
-      }
-    }
-  }
-}
-
-
 query fetchAuthor {
   author(authorId: "1") {
     success
     errors
     author {id first_name last_name}
+  }
+}
+
+query fetchAuthorWithBooks {
+  author_with_id(author_id: "1") {
+    id
+    first_name
+    last_name
+    books {
+      id
+      name
+    }
   }
 }
 

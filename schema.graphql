@@ -9,7 +9,6 @@ type Book {
     author: Author
 }
 
-
 type BookResult {
     success: Boolean!
     errors: [String]
@@ -20,11 +19,6 @@ type BooksResult {
     success: Boolean!
     errors: [String]
     books: [Book]
-}
-
-type DeleteBookResult {
-    success: Boolean!
-    errors: [String]
 }
 
 type Author {
@@ -44,6 +38,11 @@ type AuthorsResult {
     success: Boolean!
     errors: [String]
     authors: [Author]
+}
+
+type DeleteBookResult {
+    success: Boolean!
+    errors: [String]
 }
 
 type DeleteAuthorResult {
