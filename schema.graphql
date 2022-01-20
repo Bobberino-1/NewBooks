@@ -1,24 +1,10 @@
 schema {
     query: Query
-    mutation: Mutation
 }
 
 type Book {
     id: ID!
     name: String!
-    author: Author
-}
-
-type BookResult {
-    success: Boolean!
-    errors: [String]
-    book: Book
-}
-
-type BooksResult {
-    success: Boolean!
-    errors: [String]
-    books: [Book]
 }
 
 type Author {
@@ -28,40 +14,19 @@ type Author {
     books: [Book]
 }
 
-type AuthorResult {
-    success: Boolean!
-    errors: [String]
-    author: Author
-}
-
-type AuthorsResult {
-    success: Boolean!
-    errors: [String]
+type Publisher {
+    id: ID!
+    publisher_name: String
+    publisher_city: String
     authors: [Author]
-}
-
-type DeleteBookResult {
-    success: Boolean!
-    errors: [String]
-}
-
-type DeleteAuthorResult {
-    success: Boolean!
-    errors: [String]
+    books: [Book]
 }
 
 type Query {
-    author_with_id(author_id: ID!): Author
-    books: BooksResult!
-    book(bookId: ID!): BookResult!
-    authors: AuthorsResult!
-    author(authorId: ID!): AuthorResult!
-}
-
-type Mutation {
-    createBook(name: String, authorId: ID!): BookResult!
-    deleteBook(bookId: ID!): DeleteBookResult!
-    createAuthor(first_name: String, last_name: String): AuthorResult!
-    deleteAuthor(authorId: ID!): DeleteAuthorResult!
-    changeAuthorLastName(authorId: ID!, new_last_name: String): AuthorResult!
+    book(bookId: ID!): Book
+    books: [Book]
+    author(author_id: ID!): Author
+    authors: [Author]
+    publisher(publisher_id: ID!): Publisher
+    publishers: [Publisher]
 }

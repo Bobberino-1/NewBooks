@@ -4,34 +4,41 @@ from ariadne.constants import PLAYGROUND_HTML
 from flask import request, jsonify
 
 from api import app
-from api.mutations import resolve_create_book, resolve_delete_book, \
-    resolve_create_author, resolve_delete_author, resolve_author_last_name
-from api.queries import author_with_id, resolve_books_for_author, resolve_authors, \
-    resolve_books, resolve_book, resolve_author
+
+from api.queries import  \
+    resolve_book, \
+    resolve_books, \
+    resolve_author, \
+    resolve_authors, \
+    resolve_publisher, \
+    resolve_publishers
 
 # binds
 query = QueryType()
-author = ObjectType("Author")
-book = ObjectType("Book")
 
-query.set_field("author_with_id", author_with_id)
-author.set_field("books", resolve_books_for_author)
+# book = ObjectType("Book")
+# author = ObjectType("Author")
+# publisher = ObjectType("Publisher")
 
-query.set_field("authors", resolve_authors)
-query.set_field("author", resolve_author)
-query.set_field("books", resolve_books)
 query.set_field("book", resolve_book)
+query.set_field("books", resolve_books)
+query.set_field("author", resolve_author)
+query.set_field("authors", resolve_authors)
+query.set_field("publisher", resolve_publisher)
+query.set_field("publishers", resolve_publishers)
 
-mutation = ObjectType("Mutation")
-mutation.set_field("createBook", resolve_create_book)
-mutation.set_field("deleteBook", resolve_delete_book)
-mutation.set_field("createAuthor", resolve_create_author)
-mutation.set_field("deleteAuthor", resolve_delete_author)
-mutation.set_field("changeAuthorLastName", resolve_author_last_name)
+
+# author.set_field("books", resolve_books_for_author)
+# author.set_field("books", resolve_books_for_author_id)
+
+# query.set_field("resolve_books_for_publisher", resolve_books_for_publisher)
+# book.set_field("books", resolve_books_for_publisher)
+
+# publisher.set_field("authors", resolve_authors_for_publisher)
+
 
 type_defs = load_schema_from_path("schema.graphql")
-
-schema = make_executable_schema(type_defs, [author, book, query, mutation])
+schema = make_executable_schema(type_defs, query)
 
 
 @app.route("/graphql", methods=["GET"])
@@ -50,5 +57,10 @@ def graphql_server():
         debug=app.debug
     )
 
-    status_code = 200 if success else 400
-    return jsonify(result), status_code
+    print("\nIn main graphql_server: ")
+    print("Success is: ", success)
+    print("result is: ", result)
+    print("\n\n")
+
+    # status_code = 200 if success else 400
+    return jsonify(result), 200

@@ -1,0 +1,55 @@
+
+mutation newBook {
+  createBook(name:"Book 1", authorId: "1") {
+    success
+    errors
+    book {
+      id
+      name
+      author{id}
+    }
+  }
+}
+
+mutation newAuthor {
+  createAuthor(first_name:"Ernest" last_name:"Hemmingway") {
+    success
+    errors
+    author {
+      id
+      first_name
+      last_name
+    }
+  }
+}
+
+
+mutation updateAuthorLastName {
+  changeAuthorLastName(authorId: 3 new_last_name:"Hemingway") {
+    success
+    errors
+    author {
+      id
+      first_name
+      last_name
+    }
+  }
+}
+
+
+mutation {
+  deleteBook(bookId: "1") {
+    success
+    errors
+  }
+}
+
+
+mutation {
+  deleteAuthor(authorId: "1") {
+    success
+    errors
+  }
+}
+
+

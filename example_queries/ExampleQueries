@@ -1,0 +1,121 @@
+Queries:
+
+query fetchBooks {
+  books {
+    id
+    name
+  }
+}
+
+query fetchBook {
+  book(bookId: "2") {
+    id
+    name
+  }
+}
+
+query fetchAuthor {
+  author(author_id: "2") {
+    id
+    first_name
+    last_name
+  }
+}
+
+query fetchAuthors {
+  authors {
+    id
+    first_name
+    last_name
+  }
+}
+
+query fetchPublisher {
+  publisher(publisher_id: "2") {
+    id
+    publisher_name
+    publisher_city
+  }
+}
+
+query fetchPublishers {
+  publishers {
+    id
+    publisher_name
+    publisher_city
+  }
+}
+
+query fetchAuthorWithBooks{
+  author(author_id: "2") {
+  	id
+    first_name
+    last_name
+    books {
+      id
+      name
+    }
+  }
+}
+
+
+query fetchPublisherWithAuthors {
+  publisher(publisher_id: "2") {
+    id
+    publisher_name
+    publisher_city
+    authors {
+      id
+      first_name
+      last_name
+    }
+  }
+}
+
+query fetchPublisherWithAuthorsWithBooks {
+  publisher(publisher_id: "1") {
+    id
+    publisher_name
+    publisher_city
+    authors {
+    	id
+    	first_name
+    	last_name
+    	books {
+      	  id
+      	  name
+       }
+    }
+  }
+}
+
+
+query Interim {
+  resolve_publisher_query(publisher_id: "1") {
+    id
+    publisher_name
+    publisher_city
+    authors {
+    	books {
+      	  id
+      	  name
+       }
+    }
+  }
+}
+
+query fetchPublisherWithBooks {
+  resolve_books_for_publisher(publisher_id: "1") {
+    id
+    publisher_name
+    publisher_city
+    	books {
+      	  id
+      	  name
+       }
+    }
+  }
+
+
+
+

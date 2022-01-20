@@ -1,0 +1,191 @@
+Queries:
+
+query fetchAllBooks {
+  books {
+    success
+    errors
+    books {
+      name
+      id
+    }
+  }
+}
+
+query fetchBook {
+  book(bookId: "2") {
+    success
+    errors
+    book {
+      id
+      name
+    }
+  }
+}
+
+query fetchAllAuthors {
+  authors {
+    success
+    errors
+    authors {
+      first_name
+      last_name
+      id
+    }
+  }
+}
+
+query fetchAuthor {
+  author(authorId: "2") {
+    success
+    errors
+    author {
+      id
+      first_name
+      last_name
+    }
+  }
+}
+
+query fetchAllPublishers {
+  publishers {
+    success
+    errors
+    publishers {
+      publisher_name
+      publisher_city
+      id
+    }
+  }
+}
+
+query fetchPublisher {
+  publisher(publisherId: "1") {
+    success
+    errors
+    publisher {id publisher_name publisher_city}
+  }
+}
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+query fetchBook {
+  resolve_book_query(book_id: "2") {
+    id
+    name
+  }
+}
+
+query fetchBooks {
+  resolve_books_query {
+    id
+    name
+  }
+}
+
+query fetchAuthor {
+  resolve_author_query(author_id: "2") {
+    id
+    first_name
+    last_name
+  }
+}
+
+query fetchAuthors {
+  resolve_authors_query {
+    id
+    first_name
+    last_name
+  }
+}
+
+
+query fetchPublisher {
+  resolve_publisher_query(publisher_id: "2") {
+    id
+    publisher_name
+    publisher_city
+  }
+}
+
+
+
+query fetchPublishers {
+  resolve_publishers_query {
+    id
+    publisher_name
+    publisher_city
+  }
+}
+
+query fetchAuthorWithBooks{
+  resolve_author_query(author_id: "2") {
+  	id
+    first_name
+    last_name
+    books {
+      id
+      name
+    }
+  }
+}
+
+query fetchPublisherWithAuthors {
+  resolve_publisher_query(publisher_id: "2") {
+    id
+    publisher_name
+    publisher_city
+    authors {
+      id
+      first_name
+      last_name
+    }
+  }
+}
+
+query fetchPublisherWithAuthorsWithBooks {
+  resolve_publisher_query(publisher_id: "1") {
+    id
+    publisher_name
+    publisher_city
+    authors {
+    	id
+    	first_name
+    	last_name
+    	books {
+      	  id
+      	  name
+       }
+    }
+  }
+}
+
+
+query Interim {
+  resolve_publisher_query(publisher_id: "1") {
+    id
+    publisher_name
+    publisher_city
+    authors {
+    	books {
+      	  id
+      	  name
+       }
+    }
+  }
+}
+
+query fetchPublisherWithBooks {
+  resolve_books_for_publisher(publisher_id: "1") {
+    id
+    publisher_name
+    publisher_city
+    	books {
+      	  id
+      	  name
+       }
+    }
+  }
+
+
+
+
