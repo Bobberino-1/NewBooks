@@ -90,8 +90,8 @@ query fetchPublisherWithAuthorsWithBooks {
 }
 
 
-query Interim {
-  resolve_publisher_query(publisher_id: "1") {
+query fetchPublisherWithBooks {
+  publisher(publisher_id: "1") {
     id
     publisher_name
     publisher_city
@@ -104,17 +104,6 @@ query Interim {
   }
 }
 
-query fetchPublisherWithBooks {
-  resolve_books_for_publisher(publisher_id: "1") {
-    id
-    publisher_name
-    publisher_city
-    	books {
-      	  id
-      	  name
-       }
-    }
-  }
 
 
 

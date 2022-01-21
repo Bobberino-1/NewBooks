@@ -1,3 +1,18 @@
+To run, first:
+% export FLASK_APP=main.py
+
+Then:
+% flask run
+
+The URL http://127.0.0.1:5000/graphql
+typed in your browser brings up the GraphQL Playground accessing the development server.
+
+The queries in example_queries/ExampleQueries are curretly the one that are setup to run.
+
+
+
+(The following are all development notes for myself).
+
 Add, delete, list books, list book
 
 "authors": {

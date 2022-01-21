@@ -21,7 +21,6 @@ class Author(db.Model):
     publisher_id = db.Column(db.Integer, db.ForeignKey('publisher.id'))
     books = db.relationship('Book', backref='author')
 
-
     def to_dict(self):
         return {
             "id": self.id,

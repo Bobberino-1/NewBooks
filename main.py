@@ -11,14 +11,14 @@ from api.queries import  \
     resolve_author, \
     resolve_authors, \
     resolve_publisher, \
-    resolve_publishers
+    resolve_publishers, \
+    resolve_books_for_author
 
 # binds
 query = QueryType()
-
-# book = ObjectType("Book")
-# author = ObjectType("Author")
-# publisher = ObjectType("Publisher")
+book = ObjectType("Book")
+author = ObjectType("Author")
+publisher = ObjectType("Publisher")
 
 query.set_field("book", resolve_book)
 query.set_field("books", resolve_books)
@@ -27,15 +27,13 @@ query.set_field("authors", resolve_authors)
 query.set_field("publisher", resolve_publisher)
 query.set_field("publishers", resolve_publishers)
 
-
-# author.set_field("books", resolve_books_for_author)
-# author.set_field("books", resolve_books_for_author_id)
-
-# query.set_field("resolve_books_for_publisher", resolve_books_for_publisher)
+# query.set_field("books_for_publisher", resolve_books_for_publisher)
 # book.set_field("books", resolve_books_for_publisher)
 
-# publisher.set_field("authors", resolve_authors_for_publisher)
+author.set_field("books_for_author", resolve_books_for_author)
+# author.set_field("books", resolve_books_for_author_id)
 
+# publisher.set_field("authors", resolve_authors_for_publisher)
 
 type_defs = load_schema_from_path("schema.graphql")
 schema = make_executable_schema(type_defs, query)

@@ -23,6 +23,8 @@ type Publisher {
 }
 
 type Query {
+    books_for_publisher(publisher_id: ID!): [Book]
+    books_for_author(author_id: ID!): [Book]
     book(bookId: ID!): Book
     books: [Book]
     author(author_id: ID!): Author

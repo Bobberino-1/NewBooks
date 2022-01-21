@@ -186,6 +186,12 @@ query fetchPublisherWithBooks {
     }
   }
 
+query fetchPublisherWithBooks {
+  books_for_publisher(publisher_id: "1") {
+      	  id
+      	  name
+    }
+  }
 
 
 
