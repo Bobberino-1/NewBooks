@@ -59,6 +59,14 @@ query fetchAuthorWithBooks{
 }
 
 
+query fetchBooksForAuthor {
+  books_for_author(author_id: "2") {
+      id
+      name
+  }
+}
+
+
 query fetchPublisherWithAuthors {
   publisher(publisher_id: "2") {
     id
@@ -103,6 +111,15 @@ query fetchPublisherWithBooks {
     }
   }
 }
+
+
+
+query fetchPublisherWithBooks {
+  books_for_publisher(publisher_id: "1") {
+      	  id
+      	  name
+    }
+  }
 
 
 
