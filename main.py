@@ -27,7 +27,6 @@ query.set_field("author", resolve_author)
 mutation = ObjectType("Mutation")
 mutation.set_field("createBook", resolve_create_book)
 mutation.set_field("deleteBook", resolve_delete_book)
-# mutation.set_field("updateDueDate", resolve_update_due_date)
 mutation.set_field("createAuthor", resolve_create_author)
 mutation.set_field("deleteAuthor", resolve_delete_author)
 

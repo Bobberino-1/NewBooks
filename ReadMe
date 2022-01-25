@@ -48,7 +48,7 @@ and authors and one to many between authors and books.
 https://vincenttechblog.com/building-web-api-with-python-flask-graphql-sqlalchemy-and-postgresql/
 
 query {
-  author_with_id(_id: "1") {
+  author_with_id(author_id: "1") {
     id
     first_name
     last_name
