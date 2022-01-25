@@ -14,7 +14,6 @@ class Book(db.Model):
     #     }
 
     def to_dict(self):
-        print("in models.Book.to_dict")
         return {
             "id": self.id,
             "name": self.name,
@@ -34,6 +33,7 @@ class Author(db.Model):
             "first_name": self.first_name,
             "last_name": self.last_name
         }
+
 
 # class LinkBookAuthor(db.Model):
 #    id = db.Column(db.Integer, primary_key=True)

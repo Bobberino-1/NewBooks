@@ -9,7 +9,6 @@ type Book {
     author: Author
 }
 
-
 type BookResult {
     success: Boolean!
     errors: [String]
@@ -20,11 +19,6 @@ type BooksResult {
     success: Boolean!
     errors: [String]
     books: [Book]
-}
-
-type DeleteBookResult {
-    success: Boolean!
-    errors: [String]
 }
 
 type Author {
@@ -46,6 +40,11 @@ type AuthorsResult {
     authors: [Author]
 }
 
+type DeleteBookResult {
+    success: Boolean!
+    errors: [String]
+}
+
 type DeleteAuthorResult {
     success: Boolean!
     errors: [String]
@@ -64,4 +63,5 @@ type Mutation {
     deleteBook(bookId: ID!): DeleteBookResult!
     createAuthor(first_name: String, last_name: String): AuthorResult!
     deleteAuthor(authorId: ID!): DeleteAuthorResult!
+    changeAuthorLastName(authorId: ID!, new_last_name: String): AuthorResult!
 }
